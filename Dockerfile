@@ -5,11 +5,8 @@ FROM node:16 as build
 WORKDIR /app
 
 # Copy package.json and install dependencies
-COPY package.json ./
+COPY . .
 RUN npm install
-
-# Copy all other files and build the app
-COPY . ./
 RUN npm run build
 
 # Serve the build with a static server
