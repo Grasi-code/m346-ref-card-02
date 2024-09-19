@@ -1,17 +1,8 @@
-# Base image
-FROM node:16 as build
-
-# Copy package.json and install dependencies
-COPY . .
+FROM node:16-alpine
+WORKDIR /app
+COPY package*.json ./
 RUN npm install
-RUN npm run build
-
-# Serve the build with a static server
-FROM nginx:alpine
-COPY --from=build /app/build /usr/share/nginx/html
-
-# Expose port 80
-EXPOSE 80
-
-# Start the Nginx server
-CMD ["nginx", "-g", "daemon off;"]
+RUN npm update
+COPY . .
+EXPOSE 3000
+CMD ["npm", "start"]
