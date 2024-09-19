@@ -1,9 +1,6 @@
 # Base image
 FROM node:16 as build
 
-# Set working directory
-WORKDIR /app
-
 # Copy package.json and install dependencies
 COPY . .
 RUN npm install
