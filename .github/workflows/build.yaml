@@ -58,4 +58,4 @@ jobs:
 
       - name: Update ECS service
         run: |
-          aws ecs update-service --cluster ref-card-liam --service ref-card-liam-service --task-definition ref-card-liam
+          aws ecs update-service --cluster ref-card-01 --service ref-card-01-devt  --task-definition ref-card-01-devt
